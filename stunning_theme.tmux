@@ -22,14 +22,10 @@ tmux set -g @color-danger "red"
 #  Icons
 #  ────────────────────────────────────────────────────────────
 
-tmux set -g @cap-round-hard-start ""
-tmux set -g @cap-round-hard-end ""
-tmux set -g @cap-round-soft-start ""
-tmux set -g @cap-round-soft-end ""
-tmux set -g @divider-soft-left ""
-tmux set -g @divider-soft-right ""
-tmux set -g @divider-hard-left ""
-tmux set -g @divider-hard-right ""
+tmux set -g @cap-hard-start ""
+tmux set -g @cap-hard-end ""
+tmux set -g @cap-soft-start ""
+tmux set -g @cap-soft-end ""
 tmux set -g @separator "󰇙"
 
 #  Reused styles
@@ -44,7 +40,7 @@ tmux set -g @window-flags "\
 #{?window_activity_flag,󰛄 ,}\
 #{?window_silence_flag,󰪓 ,}\
 #[nobright]"
-tmux set -g @window-status-format "󱂬 #I #{E:@window-flags}#{@cap-round-soft-end} #W "
+tmux set -g @window-status-format "󱂬 #I #{E:@window-flags}#{@cap-soft-end} #W "
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                         Options                          │
@@ -55,12 +51,12 @@ tmux set -g message-style "bg=#{@color-warning} fg=#{@color-text}"
 tmux set -g pane-active-border-style "fg=#{@color-pane} bg=#{@color-active-bg}"
 tmux set -g pane-border-format "#[align=right]\
 #{?pane_dead,#[fg=red],#{?pane_last,#[fg=#{@color-pane}],}}\
- #{?pane_active,#{@cap-round-hard-start}#[reverse],#[italics]#{@cap-round-soft-start}}\
-  #P #{@cap-round-soft-end}\
+ #{?pane_active,#{@cap-hard-start}#[reverse],#[italics]#{@cap-soft-start}}\
+  #P #{@cap-soft-end}\
  #{?pane_dead,󰱮 ,󰉋 #{pane_current_path}\
  #{@separator}\
  󰆍 #{pane_current_command}}\
- #{?pane_active,#[default]#{?pane_dead,#[fg=red],}#{@cap-round-hard-end},#{@cap-round-soft-end}}\
+ #{?pane_active,#[default]#{?pane_dead,#[fg=red],}#{@cap-hard-end},#{@cap-soft-end}}\
  #{?pane_marked,󰓏  , }"
 tmux set -g pane-border-indicators colour
 tmux set -g pane-border-lines normal
@@ -76,19 +72,19 @@ tmux set -g remain-on-exit-format "#[align=centre fill=#{@color-danger} bg=#{@co
 tmux set -g status-interval 1
 tmux set -g status-justify absolute-centre
 
-tmux set -g status-left "#{@cap-round-hard-start}#[reverse] 󱃷  #S#{?session_marked, 󰓏 ,} #{@cap-round-soft-end} 󱞞 #{session_path} #[default]#{@cap-round-hard-end}"
+tmux set -g status-left "#{@cap-hard-start}#[reverse] 󱃷  #S#{?session_marked, 󰓏 ,} #{@cap-soft-end} 󱞞 #{session_path} #[default]#{@cap-hard-end}"
 tmux set -g status-left-length 80
 
 tmux set -g status-position bottom
 
 tmux set -g status-right "\
 #{?#(ping -c 1 -t 2 google.com; echo $?),#[bg=#{@color-active-bg} fg=#{@color-danger}]#[push-default],}\
-#{@cap-round-hard-start}#[reverse]\
+#{@cap-hard-start}#[reverse]\
  󰀄 #{user}\
- #{@cap-round-soft-start}\
+ #{@cap-soft-start}\
  #(ping -c 1 -t 2 google.com 2>&1 > /dev/null && echo '󰍹' || echo '󰖪')\
  #H\
- #[default]#{@cap-round-hard-end}#[pop-default]"
+ #[default]#{@cap-hard-end}#[pop-default]"
 tmux set -g status-right-length 80
 
 tmux set -g status-style "fg=#{@color-session} bg=terminal"
@@ -97,13 +93,13 @@ tmux set -g window-status-activity-style "bg=#{color-warning} fg=#{@color-text}"
 tmux set -g window-status-bell-style "fg=#{@color-danger} fg=#{@color-text}"
 tmux set -g window-status-last-style "fg=#{@color-success}"
 tmux set -g window-status-current-format "\
-#{@cap-round-hard-start}\
+#{@cap-hard-start}\
 #[bg=#{@color-window} fg=#{@color-text}]\
  #{E:@window-status-format}\
 #[default]\
-#{@cap-round-hard-end}"
+#{@cap-hard-end}"
 tmux set -g window-status-current-style "fg=#{@color-window}"
-tmux set -g window-status-format "#{@cap-round-soft-start} #{E:@window-status-format}#{@cap-round-soft-end}"
+tmux set -g window-status-format "#{@cap-soft-start} #{E:@window-status-format}#{@cap-soft-end}"
 tmux set -gF window-status-separator " #[fg=#{@color-inactive}]⋅#[default] "
 tmux set -g window-status-style "bg=#{@color-inactive-bg} italics"
 
