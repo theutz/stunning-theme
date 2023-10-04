@@ -9,7 +9,7 @@
 
 tmux set -g @color-session "blue"
 tmux set -g @color-window "cyan"
-tmux set -g @color-pane "brightblue"
+tmux set -g @color-pane "magenta"
 tmux set -g @color-text "black"
 tmux set -g @color-inactive "#717C7C"
 tmux set -g @color-inactive-bg "terminal"
@@ -44,7 +44,7 @@ tmux set -g @window-flags "\
 #{?window_activity_flag,󰛄 ,}\
 #{?window_silence_flag,󰪓 ,}\
 #[nobright]"
-tmux set -g @window-status-format "#I #{E:@window-flags}#{@cap-round-soft-end} 󱂬 #W "
+tmux set -g @window-status-format "󱂬 #I #{E:@window-flags}#{@cap-round-soft-end} #W "
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                         Options                          │
@@ -52,18 +52,18 @@ tmux set -g @window-status-format "#I #{E:@window-flags}#{@cap-round-soft-end} �
 
 tmux set -g message-command-style "bg=#{@color-danger} fg=#{@color-text}"
 tmux set -g message-style "bg=#{@color-warning} fg=#{@color-text}"
-tmux set -g pane-active-border-style "fg=#{@color-selection} bg=#{@color-active-bg}"
+tmux set -g pane-active-border-style "fg=#{@color-pane} bg=#{@color-active-bg}"
 tmux set -g pane-border-format "#[align=right]\
 #{?pane_dead,#[fg=red],#{?pane_last,#[fg=#{@color-pane}],}}\
- #{?pane_active,#{@divider-hard-right}#[reverse],#[italics]#{@divider-soft-right}}\
- #P #{@divider-soft-left}\
+ #{?pane_active,#{@cap-round-hard-start}#[reverse],#[italics]#{@cap-round-soft-start}}\
+  #P #{@cap-round-soft-end}\
  #{?pane_dead,󰱮 ,󰉋 #{pane_current_path}\
  #{@separator}\
  󰆍 #{pane_current_command}}\
- #{?pane_active,#[default]#{?pane_dead,#[fg=red],}#{@divider-hard-left},#{@divider-soft-left}}\
+ #{?pane_active,#[default]#{?pane_dead,#[fg=red],}#{@cap-round-hard-end},#{@cap-round-soft-end}}\
  #{?pane_marked,󰓏  , }"
 tmux set -g pane-border-indicators colour
-tmux set -g pane-border-lines double
+tmux set -g pane-border-lines normal
 tmux set -g pane-border-status top
 tmux set -gF pane-border-style "fg=#{@color-inactive} bg=#{@color-inactive-bg}"
 
