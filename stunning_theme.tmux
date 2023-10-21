@@ -77,7 +77,7 @@ tmux set -g remain-on-exit-format "#[align=centre fill=#{@color-danger} bg=#{@co
 tmux set -g status-interval 1
 tmux set -g status-justify absolute-centre
 
-tmux set -g status-left "#{@cap-hard-start}#[reverse] #{@icon-session}  #S#{?session_marked, 󰓏 ,} #{@cap-soft-end} 󱞞 #{session_path} #[default]#{@cap-hard-end}"
+tmux set -g status-left "#{@cap-hard-start}#[reverse] #{@icon-session}  #S#{?session_marked, 󰓏 ,} #{@cap-soft-end} 󱞞 #{b:session_path} #[default]#{@cap-hard-end}"
 tmux set -g status-left-length 80
 
 tmux set -g status-position bottom
